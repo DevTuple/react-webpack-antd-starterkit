@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { HashRouter as Router, Route, Link, Switch } from "react-router-dom";
+import { HashRouter as Router, Route, Link, Routes } from "react-router-dom";
 import "antd/dist/antd.css";
 import "../assets/stylesheets/app.css";
 import { Layout, Menu, Breadcrumb } from "antd";
@@ -15,6 +15,7 @@ export interface MainProps {}
 const { Header, Content, Footer, Sider } = Layout;
 const { SubMenu } = Menu;
 
+
 export const MainLayoutPage: React.FunctionComponent = () => {
   const [collapsed, isCollapsed] = React.useState(false);
 
@@ -23,20 +24,20 @@ export const MainLayoutPage: React.FunctionComponent = () => {
     isCollapsed(collapsed);
   };
   return (
-    <Router>
-      <div>
-        <Layout style={{ minHeight: "100vh" }}>
-          <Sider collapsible collapsed={collapsed} onCollapse={onCollapse}>
+   
+      <>
+        <Layout style={ {minHeight: "100vh"} }>
+          <Sider collapsible collapsed={collapsed} onCollapse={onCollapse} className="mh-sider">
             <div className="logo" />
-            <Menu theme="dark" defaultSelectedKeys={["1"]} mode="inline">
-              <Menu.Item key="1" icon={<PieChartOutlined />}>
+            <Menu defaultSelectedKeys={["1"]} mode="inline" className="mh-menu">
+              <Menu.Item key="1" icon={<PieChartOutlined />}  className="mh-menu-item">
                 Option 1
               </Menu.Item>
               <Menu.Item key="2" icon={<DesktopOutlined />}>
                 Option 2
               </Menu.Item>
               <SubMenu key="sub1" icon={<UserOutlined />} title="User">
-                <Menu.Item key="3">Tom</Menu.Item>
+                <Menu.Item key="3">Tom1</Menu.Item>
                 <Menu.Item key="4">Bill</Menu.Item>
                 <Menu.Item key="5">Alex</Menu.Item>
               </SubMenu>
@@ -52,11 +53,11 @@ export const MainLayoutPage: React.FunctionComponent = () => {
           <Layout className="site-layout">
             <Header className="site-layout-background" style={{ padding: 0 }} />
             <Content style={{ margin: "0 16px" }}>
-              <Switch>
-                <Route exact path="/" component={Dashboard} />
+              <Routes>
+                <Route  path="/" element={Dashboard} />
                
 
-              </Switch>
+              </Routes>
               {/* <Breadcrumb style={{ margin: "16px 0" }}>
                 <Breadcrumb.Item>User</Breadcrumb.Item>
                 <Breadcrumb.Item>Bill</Breadcrumb.Item>
@@ -69,7 +70,7 @@ export const MainLayoutPage: React.FunctionComponent = () => {
   </div>*/}
             </Content>
             <Footer style={{ textAlign: "center" }}>
-              Ant Design ©2018 Created by Ant UED
+              Fulcurm ©2022 Created by PerfectPUT
             </Footer>
           </Layout>
         </Layout>
@@ -78,7 +79,7 @@ export const MainLayoutPage: React.FunctionComponent = () => {
           <Link to="/foo">Foo</Link>
           <Link to="/bar">Bar</Link>
         </nav>
-      </div>
-    </Router>
+      </>
+   
   );
 };

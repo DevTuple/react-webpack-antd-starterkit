@@ -1,0 +1,17 @@
+{
+    "presets": [
+      [
+        "@babel/env",
+        {
+          "debug": true,
+          "useBuiltIns": "usage",
+          "modules": false
+        }
+      ],
+      "@babel/react"
+    ],
+    "plugins": [
+      "@babel/plugin-transform-template-literals",
+      "@babel/plugin-proposal-class-properties"
+    ]
+}

@@ -1,3 +1,20 @@
+
+@font-face {
+  font-family: 'OpenSans';
+  font-style: normal;
+  font-weight: normal;
+  src:
+    url('../fonts/OpenSans-Regular.ttf') format('ttf');
+}
+
+
+
+body, html { 
+  font-family: 'Montserrat' !important; 
+}
+
+
+
 .logo {
   height: 32px;
   margin: 16px;
@@ -9,4 +26,52 @@
 }
 [data-theme="dark"] .site-layout .site-layout-background {
   background: #141414;
+}
+
+
+.mh-sider {
+  background-color: #359bfb !important;
+}
+.mh-menu {
+  background-color: #359bfb !important;
+  color: #ffffff !important;
+}
+
+.mh-menu-item {
+  background-color: #359bfb !important;
+  color: #ffffff !important;
+}
+
+.ant-layout-sider-trigger{
+  background-color: #359bfb !important;
+  color: #ffffff !important;
+}
+
+.mh-menu-item :hover{
+  background-color: #aad2f8 !important;
+  color: #ffffff !important;
+}
+
+.ant-menu-item-active{
+  background-color: #aad2f8 !important;
+  color: #ffffff !important;
+}
+
+.ant-menu-submenu-active{
+  background-color: #9cc2e6 !important;
+  color: #ffffff !important;
+}
+
+.ant-menu-submenu-selected{
+  background-color: #aad2f8 !important;
+  color: #ffffff !important;
+}
+
+.ant-menu-submenu-title:hover{
+  color: #ffffff !important;
+}
+
+
+.ant-menu-submenu-arrow{
+  color: #ffffff !important;
 }

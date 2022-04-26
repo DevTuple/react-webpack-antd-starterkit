@@ -5,6 +5,7 @@ const outputConfig = {
 // Entry points
 // https://webpack.js.org/concepts/entry-points/ 
 const entryConfig = [
+    "webpack/hot/dev-server.js",
     "./src/index.tsx",
     "./src/assets/stylesheets/app.css",
 ];

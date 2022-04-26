@@ -4,14 +4,16 @@ const ReactRefreshTypeScript = require('react-refresh-typescript');
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
-const { outputConfig, copyPluginPatterns, entryConfig, devServer } = require("./env.config");
+const { outputConfig, copyPluginPatterns, entryConfig, devServer } = require("./webpack.env.config");
 const isDevelopment = process.env.NODE_ENV !== 'production';
 module.exports = (env, options) => 
 {
     return {
         mode: options.mode,
         entry: entryConfig,
-        devServer,
+        devServer:{
+            hot:true
+        },
         // Dev only
         // Target must be set to web for hmr to work with .browserlist
         // https://github.com/webpack/webpack-dev-server/issues/2758#issuecomment-710086019
@@ -19,18 +21,20 @@ module.exports = (env, options) =>
         module: {
             rules: [
                 {
-                    test: /\.tsx?$/,
+                    test: /\.([jt]sx?)?$/,
                     use: [
                         // ... other loaders
                         {
-                          loader: require.resolve('ts-loader'),
+                          loader: require.resolve('swc-loader'),
                           options: {
-                            getCustomTransformers: () => ({
-                              before: isDevelopment ? [ReactRefreshTypeScript()] : [],
-                            }),
-                            // `ts-loader` does not work with HMR unless `transpileOnly` is used.
-                            // If you need type checking, `ForkTsCheckerWebpackPlugin` is an alternative.
-                            transpileOnly: isDevelopment,
+                            jsc: {
+                              transform: {
+                                react: {
+                                  development: isDevelopment,
+                                  refresh: isDevelopment,
+                                },
+                              },
+                            },
                           },
                         },
                       ],
@@ -118,4 +122,5 @@ module.exports = (env, options) =>
             isDevelopment && new ReactRefreshWebpackPlugin(),
         ]
     };
+    
 };
